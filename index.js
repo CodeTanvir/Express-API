@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const handler = require('./handler')
 
 const app = express();
 app.use(express.json());
@@ -16,11 +17,7 @@ adminRoute.get('/dashboard', (req,res)=>{
 app.use('/admin',adminRoute);
 
 
-app.get('/user/:id',(req,res)=>{
-    console.log(req.query);
-  
-    res.send("hello nuist")
-});
+app.get('/user/:id',handler)
 
 app.post('/user/', (req, res)=>{
     console.log(req.secure);
